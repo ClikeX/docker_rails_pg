@@ -6,8 +6,14 @@ FROM ruby:${RUBY_VERSION}
 # Get basic development tools
 RUN apt-get update -qq && apt-get install -y build-essential
 
-# Install postgres client
+# For Postgres
 RUN apt-get install -y libpq-dev
+
+# For mysql
+RUN apt-get install -y libmariadb-dev
+
+# For imagemagick
+RUN apt-get install -y imagemagick
 
 # For nokogiri
 RUN apt-get install -y libxml2-dev libxslt1-dev
