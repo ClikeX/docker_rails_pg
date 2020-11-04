@@ -24,11 +24,17 @@ RUN apt-get install -y nodejs yarn
 # Turn of documentation for gems
 RUN echo 'gem: --no-document' >> /etc/.gemrc
 
-#  Update bundler and install basic gems
+# Update rubygems and install bundler
 RUN gem update --system
 RUN gem install bundler
+
+# pre-install rails
 RUN gem install rails
+# Install gems that require native extensions
 RUN gem install pg
+RUN gem install mysql2
+RUN gem install sassc
+RUN gem install appsignal
 
 # Create basic app directory
 RUN mkdir -p /var/app
